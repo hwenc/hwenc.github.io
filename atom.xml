@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://hwenc.github.io/"/>
-  <updated>2016-09-26T17:35:22.377Z</updated>
+  <updated>2016-09-26T17:38:00.297Z</updated>
   <id>http://hwenc.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://hwenc.github.io/2016/09/27/%E5%8D%9A%E5%AE%A2%E8%BD%AC%E7%A7%BB/"/>
     <id>http://hwenc.github.io/2016/09/27/博客转移/</id>
     <published>2016-09-26T17:22:14.000Z</published>
-    <updated>2016-09-26T17:35:22.377Z</updated>
+    <updated>2016-09-26T17:38:00.297Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>纸上得来总觉浅，觉知此事要躬行</p>
@@ -41,7 +41,7 @@
 <ol>
 <li>在复制的文件夹下打开git bash, 执行<code>npm install</code>。</li>
 <li>安装git部署插件，<code>npm install hexo-deployer-git --save</code></li>
-<li><p>重新添加SSH公钥到github上的博客项目，具体分为三骤：<br>首先，设置用户名和密码：</p>
+<li><p>重新添加SSH公钥到github上的博客项目，具体分为三步：<br>首先，设置用户名和密码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global user.email &quot;xx@gmail.com&quot;</div><div class="line">git config --global user.name &quot;your name&quot;</div></pre></td></tr></table></figure>
 <p> 然后生成密钥：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C &quot;xx@gmail.com&quot;</div></pre></td></tr></table></figure>

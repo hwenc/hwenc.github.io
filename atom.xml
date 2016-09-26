@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>HE&#39;s博客</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://hwenc.github.io/"/>
+  <updated>2016-09-23T12:41:05.292Z</updated>
+  <id>http://hwenc.github.io/</id>
+  
+  <author>
+    <name>hwenc</name>
+    <email>bwahwc@gmail.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python 中的join、split、strip函数</title>
+    <link href="http://hwenc.github.io/2016/09/23/Python-%E4%B8%AD%E7%9A%84join%E3%80%81split%E3%80%81strip%E5%87%BD%E6%95%B0/"/>
+    <id>http://hwenc.github.io/2016/09/23/Python-中的join、split、strip函数/</id>
+    <published>2016-09-23T11:47:28.000Z</published>
+    <updated>2016-09-23T12:41:05.292Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="序列的方法"><a href="#序列的方法" class="headerlink" title="序列的方法"></a>序列的方法</h2><p>首先介绍下序列中的一些内建函数，这里的<code>join</code>、<code>split</code>、<code>strip</code>也属于序列中的内建函数。</p>
+<p>序列包含有<strong>定值表</strong>(tuple)和<strong>表</strong>(list)。此外，字符串(string)是一种特殊的定值表。表的元素可以更改，定值表一旦建立，其元素不可更改。</p>
+<p>对于定值表来说，其内建函数主要是起到查询等功能，当然这些也适用于元素可变的表。<br>如适用于序列（表、定指标、字符串）的内建函数有：</p>
+<p><em>其中s为一个序列</em><br><a id="more"></a></p>
+<table>
+<thead>
+<tr>
+<th>内建函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>len(s)</td>
+<td>返回： 序列中包含元素的个数</td>
+</tr>
+<tr>
+<td>min(s)</td>
+<td>返回： 序列中最小的元素</td>
+</tr>
+<tr>
+<td>all(s)</td>
+<td>返回： 序列中最大的元素</td>
+</tr>
+<tr>
+<td>any(s)</td>
+<td>返回： True, 如果所有元素都为True的话</td>
+</tr>
+<tr>
+<td>max(s)</td>
+<td>返回： True, 如果任一元素为True的话</td>
+</tr>
+</tbody>
+</table>
+<p>适用于表和定制表的内建函数有：</p>
+<p><em>其中x为s中的元素值</em></p>
+<table>
+<thead>
+<tr>
+<th>内建函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sum(s)</td>
+<td>返回： 序列中所有元素的和</td>
+</tr>
+<tr>
+<td>s.count(x)</td>
+<td>返回： x在s中出现的次数</td>
+</tr>
+<tr>
+<td>s.index(x)</td>
+<td>返回： x在s中第一次出现的下标</td>
+</tr>
+</tbody>
+</table>
+<p>由于定值表的元素不可变更，只适用于表的内建函数有:<br><em>l为一个表，l2为另一个表</em></p>
+<table>
+<thead>
+<tr>
+<th>内建函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>l.extend(l2)</td>
+<td>在表l的末尾添加表l2的所有元素</td>
+</tr>
+<tr>
+<td>l.append(x)</td>
+<td>在l的末尾附加x元素</td>
+</tr>
+<tr>
+<td>l.sort()</td>
+<td>对l中的元素排序</td>
+</tr>
+<tr>
+<td>l.reverse()</td>
+<td>将l中的元素逆序</td>
+</tr>
+<tr>
+<td>l.pop()</td>
+<td>返回：表l的最后一个元素，并在表l中删除该元素</td>
+</tr>
+<tr>
+<td>del l[i]</td>
+<td>删除该元素</td>
+</tr>
+</tbody>
+</table>
+<p><strong>(以上这些方法都是在原来的表的上进行操作，会对原来的表产生影响，而不是返回一个新表。)</strong></p>
+<h2 id="join、split、strip"><a href="#join、split、strip" class="headerlink" title="join、split、strip"></a><code>join</code>、<code>split</code>、<code>strip</code></h2><p>尽管字符串是定值表的特殊的一种，但字符串(string)类有一些方法是改变字符串的。这些方法的本质不是对原有字符串进行操作，而是删除原有字符串，再建立一个新的字符串，所以并不与定值表的特点相矛盾。</p>
+<h3 id="join"><a href="#join" class="headerlink" title="join"></a><code>join</code></h3><p><code>join</code>用来连接字符串，将容器对象拆分并以指定的字符将列表内的元素（element）连接起来，<strong>返回字符串。（注意：容器对象内的元素需要时字符类型）</strong></p>
+<p><code>str.join(s)</code>，将s中的元素，以<code>str</code>为分连接符，合并成一个字符串。</p>
+<p>如下示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">In [2]: a = [&apos;no&apos;, &apos;pain&apos;, &apos;no&apos;, &apos;gain&apos;]</div><div class="line"></div><div class="line">In [3]: &apos;_&apos;.join(a)</div><div class="line">Out[3]: &apos;no_pain_no_gain&apos;</div></pre></td></tr></table></figure></p>
+<p>s中的元素分别为<code>no</code>,<code>pain</code>,<code>no</code>,<code>gain</code>,将这些元素用<code>_</code>连接成了一个字符串。<br>当然s也可以是字符串，因为字符串也属于定值表,其元素也为字符，如下示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">In [4]: b = &apos;abcde&apos;</div><div class="line"></div><div class="line">In [5]: b[0]</div><div class="line">Out[5]: &apos;a&apos;</div><div class="line"></div><div class="line">In [6]: &apos;_&apos;.join(b)</div><div class="line">Out[6]: &apos;a_b_c_d_e&apos;</div></pre></td></tr></table></figure>
+<p>s也可以为字典<code>dict</code>,其作用是将<code>dict</code>中的<code>key</code>连接起来，如下示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">In [8]: d = &#123;&apos;name&apos;:&apos;Tom&apos;,&apos;age&apos;:18&#125;</div><div class="line"></div><div class="line">In [9]: &apos;_&apos;.join(d)</div><div class="line">Out[9]: &apos;age_name&apos;</div></pre></td></tr></table></figure>
+<h3 id="split"><a href="#split" class="headerlink" title="split"></a><code>split</code></h3><p>与<code>join</code>相反，<code>split</code>以指定的字符将字符串分割为单个元素(字符类型)并加入list中，返回一个List。</p>
+<p><code>str.split([sep, [max]])</code> 功能：从左开始，以str中的sep参数为分割符(separator)，将str分割为多个子字符串，总共分割max次。这里的max参数是选填的，缺省情况下默认进行满足条件的全部分割。<br><code>str.split([sep, [max]])</code>表示从右开始分割。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">In [10]: a = &apos;no_pain_no_gain&apos;</div><div class="line"></div><div class="line">In [11]: a.split(&apos;_&apos;)</div><div class="line">Out[11]: [&apos;no&apos;, &apos;pain&apos;, &apos;no&apos;, &apos;gain&apos;]</div><div class="line"></div><div class="line">In [12]: a.split(&apos;_&apos;,2)</div><div class="line">Out[12]: [&apos;no&apos;, &apos;pain&apos;, &apos;no_gain&apos;]</div><div class="line"></div><div class="line">In [13]: a.rsplit(&apos;_&apos;)</div><div class="line">Out[13]: [&apos;no&apos;, &apos;pain&apos;, &apos;no&apos;, &apos;gain&apos;]</div><div class="line"></div><div class="line">In [14]: a.rsplit(&apos;_&apos;,2)</div><div class="line">Out[14]: [&apos;no_pain&apos;, &apos;no&apos;, &apos;gain&apos;]</div></pre></td></tr></table></figure>
+<h3 id="strip"><a href="#strip" class="headerlink" title="strip"></a><code>strip</code></h3><p><code>str.strip([sub])</code>,功能是去掉字符串开头和结尾的所有空格，不仅限于去掉一个。也可提供参数<code>sub</code>，去掉位于字符串开头和结尾的<code>sub</code>，缺省情况下是去掉空格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">In [17]: a = &apos;  a b c d &apos;  # a前面两个空格，d后面一个空格</div><div class="line"></div><div class="line">In [18]: b = a.strip()</div><div class="line"></div><div class="line">In [19]: b</div><div class="line">Out[19]: &apos;a b c d&apos;         #字符串开头和结尾的空格全部去掉，中间的不变</div><div class="line"></div><div class="line">In [20]: a = &apos;_a b c d &apos;</div><div class="line"></div><div class="line">In [21]: a.strip(&apos;_&apos;)      #去掉字符串开头的&apos;_&apos;</div><div class="line">Out[21]: &apos;a b c d &apos;</div></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这三者之间的联合使用示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">In [2]: line = &apos;a: b : c:d:e  :f:gh  &apos;</div><div class="line"></div><div class="line">In [3]: b = &apos;,&apos;.join([x.strip() for x in line.split(&apos;:&apos;)])</div><div class="line"></div><div class="line">In [4]: b</div><div class="line">Out[4]: &apos;a,b,c,d,e,f,gh&apos;</div></pre></td></tr></table></figure>
+<p>当然，也可以用replace函数达到同样的功能。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [5]: line.replace(&apos;:&apos;,&apos;,&apos;).replace(&apos; &apos;,&apos;&apos;)</div><div class="line">Out[5]: &apos;a,b,c,d,e,f,gh&apos;</div></pre></td></tr></table></figure>
+<p>其中，<code>str.replace(sub, new_sub)</code> 功能是：用一个新的字符串new_sub替换str中的sub</p>
+<p>参考资料：</p>
+<p><a href="http://www.jb51.net/article/87700.htm" target="_blank" rel="external">http://www.jb51.net/article/87700.htm</a><br><a href="http://www.cnblogs.com/vamei/archive/2012/07/19/2599940.html" target="_blank" rel="external">http://www.cnblogs.com/vamei/archive/2012/07/19/2599940.html</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;序列的方法&quot;&gt;&lt;a href=&quot;#序列的方法&quot; class=&quot;headerlink&quot; title=&quot;序列的方法&quot;&gt;&lt;/a&gt;序列的方法&lt;/h2&gt;&lt;p&gt;首先介绍下序列中的一些内建函数，这里的&lt;code&gt;join&lt;/code&gt;、&lt;code&gt;split&lt;/code&gt;、&lt;code&gt;strip&lt;/code&gt;也属于序列中的内建函数。&lt;/p&gt;
+&lt;p&gt;序列包含有&lt;strong&gt;定值表&lt;/strong&gt;(tuple)和&lt;strong&gt;表&lt;/strong&gt;(list)。此外，字符串(string)是一种特殊的定值表。表的元素可以更改，定值表一旦建立，其元素不可更改。&lt;/p&gt;
+&lt;p&gt;对于定值表来说，其内建函数主要是起到查询等功能，当然这些也适用于元素可变的表。&lt;br&gt;如适用于序列（表、定指标、字符串）的内建函数有：&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;其中s为一个序列&lt;/em&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="python" scheme="http://hwenc.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://hwenc.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python中的动态类型</title>
+    <link href="http://hwenc.github.io/2016/09/22/Python%E4%B8%AD%E7%9A%84%E5%8A%A8%E6%80%81%E7%B1%BB%E5%9E%8B/"/>
+    <id>http://hwenc.github.io/2016/09/22/Python中的动态类型/</id>
+    <published>2016-09-22T15:30:29.000Z</published>
+    <updated>2016-09-23T12:45:10.690Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Python-中的动态类型"><a href="#Python-中的动态类型" class="headerlink" title="Python 中的动态类型"></a>Python 中的动态类型</h1><p><em>参考自vamei的</em><a href="http://www.cnblogs.com/vamei/archive/2012/07/10/2582795.html" target="_blank" rel="external">Python教程</a></p>
+<h2 id="1-什么是动态类型"><a href="#1-什么是动态类型" class="headerlink" title="1. 什么是动态类型"></a>1. 什么是动态类型</h2><p>动态类型的核心是：<strong>引用和对象的分离</strong>。<strong>对象</strong>是存储在内存中的实体，如各种数字，字符串，表，词典以及类的实例等。在C语言中，这一类的数据结构成为变量，在Python中，这些称之为对象。我们并不能直接接触到对象，需要使用<strong>对象名来引用</strong>，<strong>对象名就成为指向对象的引用</strong>。并且引用（对象名）可以随时指向新的对象，如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = 3</div><div class="line">a = &apos;at&apos;</div></pre></td></tr></table></figure></p>
+<p>上面对一个语句中，3是存储于对象中的一个整数对象，通过赋值，引用a指向对象3。第二个语句中，内存中建立对象‘at’，是一个字符串(string)。引用a指向了‘at’。此时，对象3不再有引用指向它。Python会自动将没有引用指向的对象销毁(destruct)，释放相应内存。<br>(对于小的整数和短字符串，Python会缓存这些对象，而不是频繁的建立和销毁。)</p>
+<a id="more"></a>
+<p>再如下面这个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">b = 5</div><div class="line">b = a</div><div class="line">a = a + 2</div></pre></td></tr></table></figure></p>
+<p>通过前两个句子，我们让a,b指向同一个整数对象5(b = a的含义是让引用b指向引用a所指的那一个对象)。但第三个句子实际上对引用a重新赋值，让a指向一个新的对象7。此时a,b分别指向不同的对象。我们看到，即使是多个引用指向同一个对象，如果一个引用值发生变化，那么实际上是让这个引用指向一个新的引用，并不影响其他的引用的指向。从效果上看，就是各个引用各自独立，互不影响。<br><strong>而对于列表、字典等可变对象来说，情况会有不同</strong>，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">L1 = [1, 2, 3]</div><div class="line">L2 = L1</div><div class="line">L1[0] = 10</div></pre></td></tr></table></figure>
+<p>运行结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [11]: print  L2</div><div class="line">[10, 2, 3]</div></pre></td></tr></table></figure></p>
+<p>在该情况下，我们不再对L1这一引用赋值，而是对L1所指向的表的元素赋值。结果是，L2也同时发生变化。<br>原因何在呢？因为L1，L2的指向没有发生变化，依然指向那个表。表实际上是包含了多个引用的对象（每个引用是一个元素，比如L1[0]，L1[1]…, 每个引用指向一个对象，比如1,2,3), 。而L1[0] = 10这一赋值操作，并不是改变L1的指向，而是对L1[0], 也就是表对象的一部份(一个元素)，进行操作，所以所有指向该对象的引用都受到影响。<br>（与之形成对比的是，我们之前的赋值操作都没有对对象自身发生作用，只是改变引用指向。）<br>列表可以通过引用其元素，改变对象自身(in-place change)。这种对象类型，称为可变数据对象(mutable object)，词典也是这样的数据类型。</p>
+<p>而像之前的数字和字符串，不能改变对象本身，只能改变引用的指向，称为不可变数据对象(immutable object)。</p>
+<p>我们之前学的元组(tuple)，尽管可以调用引用元素，但不可以赋值，因此不能改变对象自身，所以也算是immutable object.</p>
+<h2 id="2-从动态类型看函数的传输传递"><a href="#2-从动态类型看函数的传输传递" class="headerlink" title="2.从动态类型看函数的传输传递"></a>2.从动态类型看函数的传输传递</h2><p>函数的参数传递，本质上传递的是引用。比如说：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">In [12]: def f(x):</div><div class="line">   ....:     x = 100</div><div class="line">   ....:     print x</div><div class="line">   ....:</div><div class="line"></div><div class="line">In [13]: a = 1</div><div class="line"></div><div class="line">In [14]: f(a)</div><div class="line">100</div><div class="line"></div><div class="line">In [15]: print a</div><div class="line">1</div></pre></td></tr></table></figure></p>
+<p>可以看到a的值并没有受到影响。参数x是一个新的引用，指向a所指的对象。如果参数是不可变(immutable)的对象，a和x引用之间相互独立。对参数x的操作不会影响引用a。<strong>这样的传递类似于C语言中的值传递。</strong></p>
+<p>如果传递的是可变(mutable)的对象，那么改变函数参数，有可能改变原对象。所有指向原对象的引用都会受影响，编程的时候要对此问题留心。比如说：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">In [16]: def f(x):</div><div class="line">   ....:     x[0] = 100</div><div class="line">   ....:     print x</div><div class="line">   ....:</div><div class="line"></div><div class="line">In [17]: a = [1, 2, 3]</div><div class="line"></div><div class="line">In [18]: f(a)</div><div class="line">[100, 2, 3]</div><div class="line"></div><div class="line">In [19]: a</div><div class="line">Out[19]: [100, 2, 3]</div></pre></td></tr></table></figure></p>
+<p>从上面的结果可以看出，列表a中的值发生了变化。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Python-中的动态类型&quot;&gt;&lt;a href=&quot;#Python-中的动态类型&quot; class=&quot;headerlink&quot; title=&quot;Python 中的动态类型&quot;&gt;&lt;/a&gt;Python 中的动态类型&lt;/h1&gt;&lt;p&gt;&lt;em&gt;参考自vamei的&lt;/em&gt;&lt;a href=&quot;http://www.cnblogs.com/vamei/archive/2012/07/10/2582795.html&quot;&gt;Python教程&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-什么是动态类型&quot;&gt;&lt;a href=&quot;#1-什么是动态类型&quot; class=&quot;headerlink&quot; title=&quot;1. 什么是动态类型&quot;&gt;&lt;/a&gt;1. 什么是动态类型&lt;/h2&gt;&lt;p&gt;动态类型的核心是：&lt;strong&gt;引用和对象的分离&lt;/strong&gt;。&lt;strong&gt;对象&lt;/strong&gt;是存储在内存中的实体，如各种数字，字符串，表，词典以及类的实例等。在C语言中，这一类的数据结构成为变量，在Python中，这些称之为对象。我们并不能直接接触到对象，需要使用&lt;strong&gt;对象名来引用&lt;/strong&gt;，&lt;strong&gt;对象名就成为指向对象的引用&lt;/strong&gt;。并且引用（对象名）可以随时指向新的对象，如&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;a = 3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;a = &amp;apos;at&amp;apos;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;上面对一个语句中，3是存储于对象中的一个整数对象，通过赋值，引用a指向对象3。第二个语句中，内存中建立对象‘at’，是一个字符串(string)。引用a指向了‘at’。此时，对象3不再有引用指向它。Python会自动将没有引用指向的对象销毁(destruct)，释放相应内存。&lt;br&gt;(对于小的整数和短字符串，Python会缓存这些对象，而不是频繁的建立和销毁。)&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="python" scheme="http://hwenc.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://hwenc.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python中的import问题</title>
+    <link href="http://hwenc.github.io/2016/08/11/python%E4%B8%AD%E7%9A%84import%E9%97%AE%E9%A2%98/"/>
+    <id>http://hwenc.github.io/2016/08/11/python中的import问题/</id>
+    <published>2016-08-11T12:30:10.000Z</published>
+    <updated>2016-08-09T15:20:35.876Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>import</code>是为了提高代码的重用行，避免重复造轮子，代码中的<code>import</code>有以下几种类型：<br>首先，我新建了一个文件夹<code>this_dir</code>，文件夹中新建有laugh.py文件，和<code>__init__.py</code>文件，其中的<code>__init__.py</code>文件是为了提醒python解析器该文件间是一个模块包。<br>目录如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> E:\ipython\this_dir 的目录</div><div class="line"></div><div class="line">2016/08/05  21:01    &lt;DIR&gt;          .</div><div class="line">2016/08/05  21:01    &lt;DIR&gt;          ..</div><div class="line">2016/08/03  20:11                 0 __init__.py</div><div class="line">2016/08/03  20:11               107 __init__.pyc</div><div class="line">2016/08/05  21:01                69 laugh.py</div><div class="line">2016/08/05  21:01               386 laugh.pyc</div><div class="line">               4 个文件            562 字节</div><div class="line">               2 个目录 142,787,739,648 可用字节</div></pre></td></tr></table></figure>
+<p>在<code>this_dir</code>外，新建<code>laugh1.py</code>文件，内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># coding=utf-8  # 使用中文注释，需要修改编码类型为utf-8,默认的是ASCII编码，此种编码不支持中文。</div><div class="line">from this_dir.laugh import *  # 这一个是更细粒化的引用，从一个具体模块（.py文件）中引入里面的对象。</div><div class="line"></div><div class="line">laugh()</div><div class="line">cry()</div></pre></td></tr></table></figure></p>
+<p>相比于上面，下面这种是较为粗粒化的引用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">import this_dir.laugh as laugh  # 这个与上面相比是较为粗粒化的引用，只是引入了模块（this_dir.laugh.py这个文件），没有具体到模块中的具体对象。</div><div class="line"></div><div class="line">laugh.laugh()</div><div class="line">laugh.cry()</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;import&lt;/code&gt;是为了提高代码的重用行，避免重复造轮子，代码中的&lt;code&gt;import&lt;/code&gt;有以下几种类型：&lt;br&gt;首先，我新建了一个文件夹&lt;code&gt;this_dir&lt;/code&gt;，文件夹中新建有laugh.py文件，和&lt;code&gt;__in
+    
+    </summary>
+    
+      <category term="python" scheme="http://hwenc.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://hwenc.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第一篇博客</title>
+    <link href="http://hwenc.github.io/2016/07/21/%E6%B5%8B%E8%AF%95%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://hwenc.github.io/2016/07/21/测试博客/</id>
+    <published>2016-07-21T13:45:29.000Z</published>
+    <updated>2016-07-21T13:53:44.810Z</updated>
+    
+    <content type="html"><![CDATA[<p>之前经常在网上看别人的博客，看别人的技术分享、生活感悟，从中也学到了很多，尤其是看到各种大牛的学习记录，自己偶尔也很受激励，不知某天就也想有属于自己的博客，可以记录自己的学习成长过程。因为各种原因一致没动手去做（当然主要是自己太懒了），而且近期动手搭建博客时才发现之前别人看似简单的博客，其实背后也需要付出很多，所以很是感谢曾经看过的各位博主的技术分享。在自己搭建博客的过程中，先是由同学推荐使用<a href="https://gohugo.io/" target="_blank" rel="external">Hugo</a>来搭建，但按照官网教程安装Hugo时就出现各种问题，始终没有解决，请教同学也不知道问题出在哪，最终也就不了了之了。无意中看到了<a href="http://sunwhut.com/2015/10/30/buildBlog/" target="_blank" rel="external">这篇博客</a>，博主很详细的介绍了如何通过hexo和github pages来搭建博客，尝试着跟着教程一步步把博客搭建起来,非常感谢博主。后续我会把搭建过程总结一下，因为搭建过程中还是出现了一些错误，不过最终都得到了解决，目前的博客只保留了一些简单的功能，后续会根据自己对<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="external">Hexo</a>和<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">next</a>的熟悉来逐步完善博客。</p>
+<blockquote>
+<p>比起qq空间和微信朋友圈的热闹浮躁，在网络上有属于自己的一块净土，记录自己的生活学习，感觉还是挺好滴。</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;之前经常在网上看别人的博客，看别人的技术分享、生活感悟，从中也学到了很多，尤其是看到各种大牛的学习记录，自己偶尔也很受激励，不知某天就也想有属于自己的博客，可以记录自己的学习成长过程。因为各种原因一致没动手去做（当然主要是自己太懒了），而且近期动手搭建博客时才发现之前别人看
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://hwenc.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="http://hwenc.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+</feed>

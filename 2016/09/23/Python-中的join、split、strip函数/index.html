@@ -1,0 +1,760 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="HE's博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="序列的方法首先介绍下序列中的一些内建函数，这里的join、split、strip也属于序列中的内建函数。
+序列包含有定值表(tuple)和表(list)。此外，字符串(string)是一种特殊的定值表。表的元素可以更改，定值表一旦建立，其元素不可更改。
+对于定值表来说，其内建函数主要是起到查询等功能，当然这些也适用于元素可变的表。如适用于序列（表、定指标、字符串）的内建函数有：
+其中s为一个序列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 中的join、split、strip函数">
+<meta property="og:url" content="http://hwenc.github.io/2016/09/23/Python-中的join、split、strip函数/index.html">
+<meta property="og:site_name" content="HE's博客">
+<meta property="og:description" content="序列的方法首先介绍下序列中的一些内建函数，这里的join、split、strip也属于序列中的内建函数。
+序列包含有定值表(tuple)和表(list)。此外，字符串(string)是一种特殊的定值表。表的元素可以更改，定值表一旦建立，其元素不可更改。
+对于定值表来说，其内建函数主要是起到查询等功能，当然这些也适用于元素可变的表。如适用于序列（表、定指标、字符串）的内建函数有：
+其中s为一个序列">
+<meta property="og:updated_time" content="2016-09-23T12:41:05.292Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 中的join、split、strip函数">
+<meta name="twitter:description" content="序列的方法首先介绍下序列中的一些内建函数，这里的join、split、strip也属于序列中的内建函数。
+序列包含有定值表(tuple)和表(list)。此外，字符串(string)是一种特殊的定值表。表的元素可以更改，定值表一旦建立，其元素不可更改。
+对于定值表来说，其内建函数主要是起到查询等功能，当然这些也适用于元素可变的表。如适用于序列（表、定指标、字符串）的内建函数有：
+其中s为一个序列">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://hwenc.github.io/2016/09/23/Python-中的join、split、strip函数/"/>
+
+  <title> Python 中的join、split、strip函数 | HE's博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">HE's博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Python 中的join、split、strip函数
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-23T19:47:28+08:00" content="2016-09-23">
+              2016-09-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="序列的方法"><a href="#序列的方法" class="headerlink" title="序列的方法"></a>序列的方法</h2><p>首先介绍下序列中的一些内建函数，这里的<code>join</code>、<code>split</code>、<code>strip</code>也属于序列中的内建函数。</p>
+<p>序列包含有<strong>定值表</strong>(tuple)和<strong>表</strong>(list)。此外，字符串(string)是一种特殊的定值表。表的元素可以更改，定值表一旦建立，其元素不可更改。</p>
+<p>对于定值表来说，其内建函数主要是起到查询等功能，当然这些也适用于元素可变的表。<br>如适用于序列（表、定指标、字符串）的内建函数有：</p>
+<p><em>其中s为一个序列</em><br><a id="more"></a></p>
+<table>
+<thead>
+<tr>
+<th>内建函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>len(s)</td>
+<td>返回： 序列中包含元素的个数</td>
+</tr>
+<tr>
+<td>min(s)</td>
+<td>返回： 序列中最小的元素</td>
+</tr>
+<tr>
+<td>all(s)</td>
+<td>返回： 序列中最大的元素</td>
+</tr>
+<tr>
+<td>any(s)</td>
+<td>返回： True, 如果所有元素都为True的话</td>
+</tr>
+<tr>
+<td>max(s)</td>
+<td>返回： True, 如果任一元素为True的话</td>
+</tr>
+</tbody>
+</table>
+<p>适用于表和定制表的内建函数有：</p>
+<p><em>其中x为s中的元素值</em></p>
+<table>
+<thead>
+<tr>
+<th>内建函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sum(s)</td>
+<td>返回： 序列中所有元素的和</td>
+</tr>
+<tr>
+<td>s.count(x)</td>
+<td>返回： x在s中出现的次数</td>
+</tr>
+<tr>
+<td>s.index(x)</td>
+<td>返回： x在s中第一次出现的下标</td>
+</tr>
+</tbody>
+</table>
+<p>由于定值表的元素不可变更，只适用于表的内建函数有:<br><em>l为一个表，l2为另一个表</em></p>
+<table>
+<thead>
+<tr>
+<th>内建函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>l.extend(l2)</td>
+<td>在表l的末尾添加表l2的所有元素</td>
+</tr>
+<tr>
+<td>l.append(x)</td>
+<td>在l的末尾附加x元素</td>
+</tr>
+<tr>
+<td>l.sort()</td>
+<td>对l中的元素排序</td>
+</tr>
+<tr>
+<td>l.reverse()</td>
+<td>将l中的元素逆序</td>
+</tr>
+<tr>
+<td>l.pop()</td>
+<td>返回：表l的最后一个元素，并在表l中删除该元素</td>
+</tr>
+<tr>
+<td>del l[i]</td>
+<td>删除该元素</td>
+</tr>
+</tbody>
+</table>
+<p><strong>(以上这些方法都是在原来的表的上进行操作，会对原来的表产生影响，而不是返回一个新表。)</strong></p>
+<h2 id="join、split、strip"><a href="#join、split、strip" class="headerlink" title="join、split、strip"></a><code>join</code>、<code>split</code>、<code>strip</code></h2><p>尽管字符串是定值表的特殊的一种，但字符串(string)类有一些方法是改变字符串的。这些方法的本质不是对原有字符串进行操作，而是删除原有字符串，再建立一个新的字符串，所以并不与定值表的特点相矛盾。</p>
+<h3 id="join"><a href="#join" class="headerlink" title="join"></a><code>join</code></h3><p><code>join</code>用来连接字符串，将容器对象拆分并以指定的字符将列表内的元素（element）连接起来，<strong>返回字符串。（注意：容器对象内的元素需要时字符类型）</strong></p>
+<p><code>str.join(s)</code>，将s中的元素，以<code>str</code>为分连接符，合并成一个字符串。</p>
+<p>如下示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">In [2]: a = [&apos;no&apos;, &apos;pain&apos;, &apos;no&apos;, &apos;gain&apos;]</div><div class="line"></div><div class="line">In [3]: &apos;_&apos;.join(a)</div><div class="line">Out[3]: &apos;no_pain_no_gain&apos;</div></pre></td></tr></table></figure></p>
+<p>s中的元素分别为<code>no</code>,<code>pain</code>,<code>no</code>,<code>gain</code>,将这些元素用<code>_</code>连接成了一个字符串。<br>当然s也可以是字符串，因为字符串也属于定值表,其元素也为字符，如下示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">In [4]: b = &apos;abcde&apos;</div><div class="line"></div><div class="line">In [5]: b[0]</div><div class="line">Out[5]: &apos;a&apos;</div><div class="line"></div><div class="line">In [6]: &apos;_&apos;.join(b)</div><div class="line">Out[6]: &apos;a_b_c_d_e&apos;</div></pre></td></tr></table></figure>
+<p>s也可以为字典<code>dict</code>,其作用是将<code>dict</code>中的<code>key</code>连接起来，如下示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">In [8]: d = &#123;&apos;name&apos;:&apos;Tom&apos;,&apos;age&apos;:18&#125;</div><div class="line"></div><div class="line">In [9]: &apos;_&apos;.join(d)</div><div class="line">Out[9]: &apos;age_name&apos;</div></pre></td></tr></table></figure>
+<h3 id="split"><a href="#split" class="headerlink" title="split"></a><code>split</code></h3><p>与<code>join</code>相反，<code>split</code>以指定的字符将字符串分割为单个元素(字符类型)并加入list中，返回一个List。</p>
+<p><code>str.split([sep, [max]])</code> 功能：从左开始，以str中的sep参数为分割符(separator)，将str分割为多个子字符串，总共分割max次。这里的max参数是选填的，缺省情况下默认进行满足条件的全部分割。<br><code>str.split([sep, [max]])</code>表示从右开始分割。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">In [10]: a = &apos;no_pain_no_gain&apos;</div><div class="line"></div><div class="line">In [11]: a.split(&apos;_&apos;)</div><div class="line">Out[11]: [&apos;no&apos;, &apos;pain&apos;, &apos;no&apos;, &apos;gain&apos;]</div><div class="line"></div><div class="line">In [12]: a.split(&apos;_&apos;,2)</div><div class="line">Out[12]: [&apos;no&apos;, &apos;pain&apos;, &apos;no_gain&apos;]</div><div class="line"></div><div class="line">In [13]: a.rsplit(&apos;_&apos;)</div><div class="line">Out[13]: [&apos;no&apos;, &apos;pain&apos;, &apos;no&apos;, &apos;gain&apos;]</div><div class="line"></div><div class="line">In [14]: a.rsplit(&apos;_&apos;,2)</div><div class="line">Out[14]: [&apos;no_pain&apos;, &apos;no&apos;, &apos;gain&apos;]</div></pre></td></tr></table></figure>
+<h3 id="strip"><a href="#strip" class="headerlink" title="strip"></a><code>strip</code></h3><p><code>str.strip([sub])</code>,功能是去掉字符串开头和结尾的所有空格，不仅限于去掉一个。也可提供参数<code>sub</code>，去掉位于字符串开头和结尾的<code>sub</code>，缺省情况下是去掉空格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">In [17]: a = &apos;  a b c d &apos;  # a前面两个空格，d后面一个空格</div><div class="line"></div><div class="line">In [18]: b = a.strip()</div><div class="line"></div><div class="line">In [19]: b</div><div class="line">Out[19]: &apos;a b c d&apos;         #字符串开头和结尾的空格全部去掉，中间的不变</div><div class="line"></div><div class="line">In [20]: a = &apos;_a b c d &apos;</div><div class="line"></div><div class="line">In [21]: a.strip(&apos;_&apos;)      #去掉字符串开头的&apos;_&apos;</div><div class="line">Out[21]: &apos;a b c d &apos;</div></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这三者之间的联合使用示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">In [2]: line = &apos;a: b : c:d:e  :f:gh  &apos;</div><div class="line"></div><div class="line">In [3]: b = &apos;,&apos;.join([x.strip() for x in line.split(&apos;:&apos;)])</div><div class="line"></div><div class="line">In [4]: b</div><div class="line">Out[4]: &apos;a,b,c,d,e,f,gh&apos;</div></pre></td></tr></table></figure>
+<p>当然，也可以用replace函数达到同样的功能。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [5]: line.replace(&apos;:&apos;,&apos;,&apos;).replace(&apos; &apos;,&apos;&apos;)</div><div class="line">Out[5]: &apos;a,b,c,d,e,f,gh&apos;</div></pre></td></tr></table></figure>
+<p>其中，<code>str.replace(sub, new_sub)</code> 功能是：用一个新的字符串new_sub替换str中的sub</p>
+<p>参考资料：</p>
+<p><a href="http://www.jb51.net/article/87700.htm" target="_blank" rel="external">http://www.jb51.net/article/87700.htm</a><br><a href="http://www.cnblogs.com/vamei/archive/2012/07/19/2599940.html" target="_blank" rel="external">http://www.cnblogs.com/vamei/archive/2012/07/19/2599940.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/22/Python中的动态类型/" rel="next" title="Python中的动态类型">
+                <i class="fa fa-chevron-left"></i> Python中的动态类型
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oarpe3qtv.bkt.clouddn.com/touxiang.png"
+               alt="hwenc" />
+          <p class="site-author-name" itemprop="name">hwenc</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hwenc" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/bai-hua-shu-19" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#序列的方法"><span class="nav-number">1.</span> <span class="nav-text">序列的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#join、split、strip"><span class="nav-number">2.</span> <span class="nav-text">join、split、strip</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#join"><span class="nav-number">2.1.</span> <span class="nav-text">join</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#split"><span class="nav-number">2.2.</span> <span class="nav-text">split</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#strip"><span class="nav-number">2.3.</span> <span class="nav-text">strip</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hwenc</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

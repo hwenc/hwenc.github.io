@@ -120,7 +120,7 @@
 
 安装Git 和Node.js,这些都直接按默认的点击next就好。
 在任意位置打开git bash客户端，输入 npm install hexo-cli -g安装hexo，会默认安装在C盘">
-<meta property="og:updated_time" content="2016-09-26T17:23:43.543Z">
+<meta property="og:updated_time" content="2016-09-26T17:35:22.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="博客转移">
 <meta name="twitter:description" content="纸上得来总觉浅，觉知此事要躬行
@@ -349,12 +349,13 @@
 <li>在任意位置打开git bash客户端，输入 <code>npm install hexo-cli -g</code>安装hexo，会默认安装在C盘。不要执行<code>hexo init</code>。</li>
 <li>将旧电脑中的原有的博客相关文件打包复制到新电脑中（文件比较多，上千个文件，不打包复制会很慢），我是将其放在D盘，将其解压后，比较重要的一步来了，就是确定哪些文件需要删除，哪些文件需要保留，下面是引述知乎用户skycrown的原话（侵删）：</li>
 </ol>
+<a id="more"></a>
 <hr>
 <p>作者：skycrown<br>链接：<a href="https://www.zhihu.com/question/21193762/answer/103097754" target="_blank" rel="external">https://www.zhihu.com/question/21193762/answer/103097754</a><br>来源：知乎</p>
-<p>1）讨论下哪些文件是必须拷贝的：首先是之前自己修改的文件，像站点配置_config.yml，theme文件夹里面的主题，以及source里面自己写的博客文件，这些肯定要拷贝的。除此之外，还有三个文件需要有，就是scaffolds文件夹（文章的模板）、package.json（说明使用哪些包）和.gitignore（限定在提交的时候哪些文件可以忽略）。其实，这三个文件不是我们修改的，所以即使丢失了，也没有关系，我们可以建立一个新的文件夹，然后在里面执行hexo init，就会生成这三个文件，我们只需要将它们拷贝过来使用即可。总结：_config.yml，theme/，source/，scaffolds/，package.json，.gitignore，是需要拷贝的。</p>
-<p>==（这里和作者不同的是我的文件夹中没有.gitignore，而是.npmignore）==</p>
+<p>（1）讨论下哪些文件是必须拷贝的：首先是之前自己修改的文件，像站点配置_config.yml，theme文件夹里面的主题，以及source里面自己写的博客文件，这些肯定要拷贝的。除此之外，还有三个文件需要有，就是scaffolds文件夹（文章的模板）、package.json（说明使用哪些包）和.gitignore（限定在提交的时候哪些文件可以忽略）。其实，这三个文件不是我们修改的，所以即使丢失了，也没有关系，我们可以建立一个新的文件夹，然后在里面执行hexo init，就会生成这三个文件，我们只需要将它们拷贝过来使用即可。总结：_config.yml，theme/，source/，scaffolds/，package.json，.gitignore，是需要拷贝的。<br>（这里和作者不同的是我的文件夹中没有.gitignore，而是.npmignore）</p>
 <p>（2）再讨论下哪些文件是不必拷贝的，或者说可以删除的：首先是.git文件，无论是在站点根目录下，还是主题目录下的.git文件，都可以删掉。然后是文件夹node_modules（在用npm install会重新生成），public（这个在用hexo g时会重新生成），.deploy_git文件夹（在使用hexo d时也会重新生成），db.json文件。其实上面这些文件也就是是.gitignore文件里面记载的可以忽略的内容。总结：.git/，node_modules/，public/，.deploy_git/，db.json文件需要删除。</p>
 <hr>
+<p>之后的步骤为：</p>
 <ol>
 <li>在复制的文件夹下打开git bash, 执行<code>npm install</code>。</li>
 <li>安装git部署插件，<code>npm install hexo-deployer-git --save</code></li>

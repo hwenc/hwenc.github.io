@@ -263,6 +263,130 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/30/Python中的正则表达式/" itemprop="url">
+                  Python中的正则表达式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-30T00:56:05+08:00" content="2016-09-30">
+              2016-09-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><em>参考自</em> <a href="http://note.youdao.com/">vamei的python教程</a>和廖雪峰的 <a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386832260566c26442c671fa489ebc6fe85badda25cd000">教程</a> </p>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>正则表达式（regular expression）主要功能是从字符串中通过特定的模式（pattern），搜索到想要找到的内容。</p>
+<p>如果要从字符串中搜索某一确定的子字符串，可以使用<code>find()</code>函数，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; s = &quot;I want to find him&quot;</div><div class="line">&gt;&gt;&gt; s.find(&quot;him&quot;)</div><div class="line">15</div></pre></td></tr></table></figure></p>
+<p><code>s.find()</code>返回的是<code>him</code>第一次出现的索引位置，如果不存在则返回<code>-1</code>。<br>但如果我们不确定要找的具体内容，而是一些模糊的目标，比如想找出字符串中包含的数字，这些数字可以是0到9中的任何一个。这些模糊的目标可以作为信息写入正则表达式，传递给Python，从而让Python知道我们想要找的是什么。</p>
+<p>在Python中使用正则表达式需要导入标准库中的一个包<code>re</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import re</div></pre></td></tr></table></figure></p>
+<h3 id="常用的正则表达式函数"><a href="#常用的正则表达式函数" class="headerlink" title="常用的正则表达式函数"></a>常用的正则表达式函数</h3><ul>
+<li><code>re.search()</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">m = re.search(pattern, string)  # 搜索整个字符串，直到发现符合的子字符串。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import re</div><div class="line">&gt;&gt;&gt; m = re.search(&quot;[0-9]&quot;, &quot;abcd4ef&quot;)</div><div class="line">&gt;&gt;&gt; print m.group()</div><div class="line">4</div></pre></td></tr></table></figure></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/30/Python中的正则表达式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/29/Python-中dict/" itemprop="url">
                   Python 中dict()
                 </a>
@@ -1123,7 +1247,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

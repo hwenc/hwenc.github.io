@@ -1,0 +1,704 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="参考自 vamei的python教程和廖雪峰的 教程 
+概述正则表达式（regular expression）主要功能是从字符串中通过特定的模式（pattern），搜索到想要找到的内容。
+如果要从字符串中搜索某一确定的子字符串，可以使用find()函数，如下：123&amp;gt;&amp;gt;&amp;gt; s = &amp;quot;I want to find him&amp;quot;&amp;gt;&amp;gt;&amp;gt; s.find(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python中的正则表达式">
+<meta property="og:url" content="http://hwenc.github.io/2016/09/30/Python中的正则表达式/index.html">
+<meta property="og:site_name" content="HE's博客">
+<meta property="og:description" content="参考自 vamei的python教程和廖雪峰的 教程 
+概述正则表达式（regular expression）主要功能是从字符串中通过特定的模式（pattern），搜索到想要找到的内容。
+如果要从字符串中搜索某一确定的子字符串，可以使用find()函数，如下：123&amp;gt;&amp;gt;&amp;gt; s = &amp;quot;I want to find him&amp;quot;&amp;gt;&amp;gt;&amp;gt; s.find(">
+<meta property="og:updated_time" content="2016-09-29T16:59:29.369Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python中的正则表达式">
+<meta name="twitter:description" content="参考自 vamei的python教程和廖雪峰的 教程 
+概述正则表达式（regular expression）主要功能是从字符串中通过特定的模式（pattern），搜索到想要找到的内容。
+如果要从字符串中搜索某一确定的子字符串，可以使用find()函数，如下：123&amp;gt;&amp;gt;&amp;gt; s = &amp;quot;I want to find him&amp;quot;&amp;gt;&amp;gt;&amp;gt; s.find(">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://hwenc.github.io/2016/09/30/Python中的正则表达式/"/>
+
+  <title> Python中的正则表达式 | HE's博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">HE's博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Python中的正则表达式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-30T00:56:05+08:00" content="2016-09-30">
+              2016-09-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><em>参考自</em> <a href="http://note.youdao.com/" target="_blank" rel="external">vamei的python教程</a>和廖雪峰的 <a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386832260566c26442c671fa489ebc6fe85badda25cd000" target="_blank" rel="external">教程</a> </p>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>正则表达式（regular expression）主要功能是从字符串中通过特定的模式（pattern），搜索到想要找到的内容。</p>
+<p>如果要从字符串中搜索某一确定的子字符串，可以使用<code>find()</code>函数，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; s = &quot;I want to find him&quot;</div><div class="line">&gt;&gt;&gt; s.find(&quot;him&quot;)</div><div class="line">15</div></pre></td></tr></table></figure></p>
+<p><code>s.find()</code>返回的是<code>him</code>第一次出现的索引位置，如果不存在则返回<code>-1</code>。<br>但如果我们不确定要找的具体内容，而是一些模糊的目标，比如想找出字符串中包含的数字，这些数字可以是0到9中的任何一个。这些模糊的目标可以作为信息写入正则表达式，传递给Python，从而让Python知道我们想要找的是什么。</p>
+<p>在Python中使用正则表达式需要导入标准库中的一个包<code>re</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import re</div></pre></td></tr></table></figure></p>
+<h3 id="常用的正则表达式函数"><a href="#常用的正则表达式函数" class="headerlink" title="常用的正则表达式函数"></a>常用的正则表达式函数</h3><ul>
+<li><code>re.search()</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">m = re.search(pattern, string)  # 搜索整个字符串，直到发现符合的子字符串。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import re</div><div class="line">&gt;&gt;&gt; m = re.search(&quot;[0-9]&quot;, &quot;abcd4ef&quot;)</div><div class="line">&gt;&gt;&gt; print m.group()</div><div class="line">4</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p><code>re.search()</code>如果从第二个参数找到符合要求的子字符串，就返回一个对象<code>m</code>，你可以通过<code>m.group()</code>的方法查看搜索到的结果。如果没有找到符合要求的字符，<code>re.search()</code>会返回<code>None</code>。</p>
+<ul>
+<li><code>re.match()</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">m = re.match(pattern, string)   # 从头开始检查字符串是否符合正则表达式。必须从字符串的第一个字符开始就相符。</div></pre></td></tr></table></figure>
+<p>示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; m = re.match(&quot;[0-9]&quot;, &quot;abcd4ef&quot;)</div><div class="line">&gt;&gt;&gt; if m is not None:</div><div class="line">        print m.group()</div><div class="line">    else:</div><div class="line">        print m</div><div class="line">&gt;&gt;&gt;</div><div class="line">None</div></pre></td></tr></table></figure></p>
+<p>上面的<code>re.match()</code>返回的值是<code>None</code>, 因为字符串的起始为<code>a</code>,不符合正则表达式<code>&quot;[0-9]&quot;</code>的要求。<br>这里需要注意的是，只有当能匹配成功，<code>re.search()</code>和<code>re.match()</code><br>返回的值不为<code>None</code>时才可以用<code>m.group()</code>来调用结果，否则<code>m.group()</code>会报出错误，因为<code>None</code>没有<code>group()</code>函数。</p>
+<ul>
+<li><code>re.sub()</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str = re.sub(pattern, replacement, string, count=0, flags=0)</div></pre></td></tr></table></figure>
+<p>在<code>string</code>中利用正则变换<code>pattern</code>进行字符串的整体搜索，对于搜索到的字符串，用另一字符串<code>replacement</code>替换。<code>count</code>为替换的个数，默认为<code>0</code>表示全部替换，<code>flags</code>控制正则表达式的匹配方式，比如是否区分大小写。返回替换后的字符串。<br>示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; str = re.sub(&quot;a&quot;, &quot;abcd&quot;, &quot;abcefa&quot;)</div><div class="line">&gt;&gt;&gt; print str</div><div class="line">abcdbcefabcd</div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>re.split()</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">re.split(pattern, string, maxsplit=0, flags=0)</div></pre></td></tr></table></figure>
+<p><code>pattern</code>：正则表达式<br><code>string</code>：要匹配的字符串<br><code>maxsplit</code>：最大的分割次数，默认为<code>0</code>时表示全部分割。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; m = re.split(r&quot;\s+&quot;, &quot;a b  c&quot;)</div><div class="line">&gt;&gt;&gt; print m</div><div class="line">[&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]</div></pre></td></tr></table></figure>
+<p>以字符串中的空格来分割字符串<code>\s+</code>表示匹配多个空格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; re.split(r&apos;[\s\,\;]+&apos;, &apos;a,b;; c  d&apos;)</div><div class="line">&gt;&gt;&gt;</div><div class="line">[&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;]</div></pre></td></tr></table></figure>
+<ul>
+<li>re.compile()</li>
+</ul>
+<p><code>re.compile()</code>是为了正则表达式的重复使用，</p>
+<p>当我们在Python中使用正则表达式时，re模块内部会干两件事情：<br>1.编译正则表达式，如果正则表达式的字符串本身不合法，会报错；<br>2.用编译后的正则表达式去匹配字符串。<br>如果一个正则表达式要重复使用，出于效率的考虑，我们可以预编译该正则表达式，接下来重复使用时就不需要编译这个步骤了，直接匹配<code>re.compile()</code>函数就是对正则表达式的预先编译：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import re</div><div class="line">&gt;&gt;&gt; re_telephone = re.compile(r&apos;^(\d&#123;3&#125;)-(\d&#123;3,8&#125;)$&apos;)</div><div class="line">&gt;&gt;&gt; re_telephone.match(&apos;010-12345&apos;).groups()</div><div class="line">(&apos;010&apos;, &apos;12345&apos;)</div><div class="line">&gt;&gt;&gt; re_telephone.match(&apos;010-8086&apos;).groups()</div><div class="line">(&apos;010&apos;, &apos;8086&apos;)</div></pre></td></tr></table></figure></p>
+<h3 id="正则表达式规范"><a href="#正则表达式规范" class="headerlink" title="正则表达式规范"></a>正则表达式规范</h3><p>在正则表达式中，如果直接给出字符，就是精确匹配。用\d可以匹配一个数字，\w可以匹配一个字母或数字，所以：</p>
+<ul>
+<li><code>&#39;00\d&#39;</code>可以匹配<code>&#39;007&#39;</code>，但无法匹配<code>&#39;00A&#39;</code>；</li>
+<li><code>&#39;\d\d\d&#39;</code>可以匹配<code>&#39;010&#39;</code>；</li>
+<li><code>&#39;\w\w\d&#39;</code>可以匹配<code>&#39;py3&#39;</code>；<br><code>.</code>可以匹配任意字符，默认之匹配一个符合规则的所以：</li>
+<li><code>&#39;py.&#39;</code>可以匹配<code>&#39;pyc&#39;</code>、<code>&#39;pyo&#39;</code>、<code>&#39;py!&#39;</code>等等。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; m = re.search(&quot;.&quot;, &quot;abcd&quot;)</div><div class="line">&gt;&gt;&gt; m.group()</div><div class="line">&apos;a&apos;</div></pre></td></tr></table></figure>
+<p>如要匹配多个，加上<code>+</code>,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; m = re.search(&quot;.+&quot;, &quot;abcd&quot;)</div><div class="line">&gt;&gt;&gt; m.group()</div><div class="line">&apos;abcd&apos;</div></pre></td></tr></table></figure>
+<p>要匹配变长的字符，在正则表达式中，用<code>*</code>表示任意个字符（包括<code>0</code>个），用<code>+</code>表示至少一个字符，用<code>?</code>表示<code>0</code>个或<code>1</code>个字符，用<code>{n}</code>表示<code>n</code>个字符，用<code>{n,m}</code>表示<code>n-m</code>个字符：<br>如正则表达式：<code>\d{3}\s+\d{3,8}</code>从右至左解读如下：</p>
+<ul>
+<li><code>\d{3}</code>表示匹配3个数字，比如<code>010</code></li>
+<li><code>\s+</code>表示匹配至少一个空格，例如匹配<code>&#39; &#39;</code>,<code>&#39;  &#39;</code>。</li>
+<li><code>\d{3,8}</code>表示匹配3-8个数字，例如<code>1234567</code>。<br>综上，上面的正则表达式可以匹配任意个以空格隔开的带区号的电话号码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; m = re.search(r&quot;\d&#123;3&#125;\s+\d&#123;3,8&#125;&quot;, &quot;my num is 010 123456, please call me&quot;)</div><div class="line">&gt;&gt;&gt; m.group()</div><div class="line">&apos;010 123456&apos;</div><div class="line">&gt;&gt;&gt; s1 = &quot;我的号码是010 123456&quot;</div><div class="line">&gt;&gt;&gt; m = re.search(r&quot;\d&#123;3&#125;\s+\d&#123;3,8&#125;&quot;, s1)</div><div class="line">&gt;&gt;&gt; m</div><div class="line">&lt;_sre.SRE_Match object at 0x02E72CD0&gt;</div><div class="line">&gt;&gt;&gt; m.group()</div><div class="line">&apos;010 123456&apos;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><code>re.match()</code>和<code>re.split()</code>也有同样的用法.</p>
+<h5 id="精确匹配"><a href="#精确匹配" class="headerlink" title="精确匹配"></a>精确匹配</h5><p>如果要做<strong>更精确地匹配</strong>，可以用<strong>列表<code>[]</code></strong>表示范围。</p>
+<ul>
+<li><code>[0-9a-zA-Z\_]</code>可以匹配一个数字、字母或者下划线；</li>
+<li><code>[0-9a-zA-Z\_]</code>+可以匹配至少由一个数字、字母或者下划线组成的字符串，比如<code>&#39;a100&#39;</code>，<code>&#39;0_Z&#39;</code>，<code>&#39;Py3000&#39;</code>等等；</li>
+<li><code>[a-zA-Z\_][0-9a-zA-Z\_]*</code>可以匹配由字母或下划线开头，后接任意个由一个数字、字母或者下划线组成的字符串，也就是Python合法的变量；</li>
+<li><code>[a-zA-Z\_][0-9a-zA-Z\_]{0, 19}</code>更精确地限制了变量的长度是1-20个字符（前面1个字符+后面最多19个字符）。</li>
+</ul>
+<p><code>A|B</code>可以匹配<code>A</code>或<code>B</code>，所以<code>(P|p)ython</code>可以匹配<code>&#39;Python&#39;</code>或者<code>&#39;python&#39;</code>。</p>
+<p><code>^</code>表示行的开头，<code>^\d</code>表示必须以数字开头。</p>
+<p><code>$</code>表示行的结束，<code>\d$</code>表示必须以数字结束。</p>
+<p>你可能注意到了，<code>py</code>也可以匹配’python’，但是加上<code>^py$</code>就变成了整行匹配，就只能匹配<code>&#39;py&#39;</code>了。</p>
+<h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4><p>除了简单地判断是否匹配之外，正则表达式还有提取子串的强大功能。用()表示的就是要提取的分组（Group）<br><code>^(\d{3})-(\d{3,8})$</code>分别定义了两个组，可以直接从匹配的字符串中提取出区号和本地号码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; m = re.search(r&quot;(\d&#123;3&#125;)\-(\d&#123;3,8&#125;)&quot;, &quot;my num is 010-123456&quot;)</div><div class="line">&gt;&gt;&gt; m.group(0)</div><div class="line">&apos;010-123456&apos;</div><div class="line">&gt;&gt;&gt; m.group(1)</div><div class="line">&apos;010&apos;</div><div class="line">&gt;&gt;&gt; m.group(2)</div><div class="line">&apos;123456&apos;</div></pre></td></tr></table></figure></p>
+<p>注意到<code>group(0)</code>永远是原始字符串，<code>group(1)</code>、<code>group(2)</code>……表示第1、2、……个子串。</p>
+<h4 id="贪婪匹配"><a href="#贪婪匹配" class="headerlink" title="贪婪匹配"></a>贪婪匹配</h4><p>正则匹配默认是贪婪匹配，也就是匹配尽可能多的字符。举例如下，匹配出数字后面的<code>0</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; s = &quot;102300&quot;</div><div class="line">&gt;&gt;&gt; re.search(r&quot;^(\d+?)(0*)$&quot;, s)</div><div class="line">&lt;_sre.SRE_Match object at 0x02E63F08&gt;</div><div class="line">&gt;&gt;&gt; re.search(r&quot;^(\d+?)(0*)$&quot;, s).groups()</div><div class="line">(&apos;1023&apos;, &apos;00&apos;)</div><div class="line">&gt;&gt;&gt; re.search(r&quot;^(\d+?)(0*)$&quot;, &quot;1023000100&quot;).groups()</div><div class="line">(&apos;10230001&apos;, &apos;00&apos;)</div><div class="line">&gt;&gt;&gt; re.search(r&quot;^(\d+?)(0*)$&quot;, &quot;1023000101&quot;).groups()</div><div class="line">(&apos;1023000101&apos;, &apos;&apos;)</div></pre></td></tr></table></figure></p>
+<p>由于<code>\d+</code>采用贪婪匹配，直接把后面的<code>0</code>全部匹配了，结果<code>0*</code>只能匹配空字符串了。</p>
+<p>必须让<code>\d+</code>采用非贪婪匹配（也就是尽可能少匹配），才能把后面的<code>0</code>匹配出来，加个<code>?</code>就可以让<code>\d+</code>采用非贪婪匹配。同时可以看出，<code>\d+?</code>只会为<code>0*</code>保留一项能匹配成功的字符串。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/29/Python-中dict/" rel="next" title="Python 中dict()">
+                <i class="fa fa-chevron-left"></i> Python 中dict()
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oarpe3qtv.bkt.clouddn.com/touxiang.png"
+               alt="hwenc" />
+          <p class="site-author-name" itemprop="name">hwenc</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hwenc" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/bai-hua-shu-19" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的正则表达式函数"><span class="nav-number">2.</span> <span class="nav-text">常用的正则表达式函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式规范"><span class="nav-number">3.</span> <span class="nav-text">正则表达式规范</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#精确匹配"><span class="nav-number">3.0.1.</span> <span class="nav-text">精确匹配</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分组"><span class="nav-number">3.1.</span> <span class="nav-text">分组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#贪婪匹配"><span class="nav-number">3.2.</span> <span class="nav-text">贪婪匹配</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hwenc</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -118,7 +118,7 @@ Python对于整数和短小的字符会进行缓存，以便重复使用：">
 12345&amp;gt;&amp;gt;&amp;gt; a = 1&amp;gt;&amp;gt;&amp;gt; id(a)40072848&amp;gt;&amp;gt;&amp;gt; hex(id(a))&amp;apos;0x2637690&amp;apos;
 
 Python对于整数和短小的字符会进行缓存，以便重复使用：">
-<meta property="og:updated_time" content="2016-09-29T10:33:21.300Z">
+<meta property="og:updated_time" content="2016-09-29T10:36:45.854Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 中内存管理">
 <meta name="twitter:description" content="参考自Vamei的博客
@@ -349,11 +349,12 @@ Python对于整数和短小的字符会进行缓存，以便重复使用：">
 </ul>
 <p>可以看到，<code>a</code>和<code>b</code>,<code>c</code>和<code>d</code>指向的是同一对象，可以用关键字<code>is</code>来判断两个引用所指的对象是否相同。</p>
 <ul>
-<li><p>而对于列表或者较长的字符串，Python不进行缓存：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; e = []</div><div class="line">&gt;&gt;&gt; f = []</div><div class="line">&gt;&gt;&gt; e is f</div><div class="line">False</div><div class="line">&gt;&gt;&gt; k = &quot;hello world&quot;</div><div class="line">&gt;&gt;&gt; j = &quot;hello world&quot;</div><div class="line">&gt;&gt;&gt; k is j</div><div class="line">False</div></pre></td></tr></table></figure>
+<li>而对于列表或者较长的字符串，Python不进行缓存：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; e = []</div><div class="line">&gt;&gt;&gt; f = []</div><div class="line">&gt;&gt;&gt; e is f</div><div class="line">False</div><div class="line">&gt;&gt;&gt; k = &quot;hello world&quot;</div><div class="line">&gt;&gt;&gt; j = &quot;hello world&quot;</div><div class="line">&gt;&gt;&gt; k is j</div><div class="line">False</div></pre></td></tr></table></figure>
 </li>
-<li><p>对象引用对象<br>Python的一个容器对象(container)，比如表、词典等，可以包含多个对象。实际上，容器对象中包含的并不是元素对象本身，是指向各个元素对象的引用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; class from_obj(object):</div><div class="line">    def __init__(self, to_obj):</div><div class="line">        self.to_obj = to_obj</div><div class="line"></div><div class="line">b = [1,2,3]</div><div class="line">a = from_obj(b)</div><div class="line">print(id(a.to_obj))</div><div class="line">print(id(b))</div><div class="line"></div><div class="line">48373392</div><div class="line">48373392</div></pre></td></tr></table></figure>
+</ul>
+<a id="more"></a>
+<ul>
+<li>对象引用对象<br>Python的一个容器对象(container)，比如表、词典等，可以包含多个对象。实际上，容器对象中包含的并不是元素对象本身，是指向各个元素对象的引用。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; class from_obj(object):</div><div class="line">    def __init__(self, to_obj):</div><div class="line">        self.to_obj = to_obj</div><div class="line"></div><div class="line">b = [1,2,3]</div><div class="line">a = from_obj(b)</div><div class="line">print(id(a.to_obj))</div><div class="line">print(id(b))</div><div class="line"></div><div class="line">48373392</div><div class="line">48373392</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>可以看到a引用了对象b</p>

@@ -114,7 +114,7 @@
 1d = &amp;#123;&amp;quot;name&amp;quot; : value1, &amp;quot;ege&amp;quot; : value2 &amp;#125;
 创建字典除了上面这种较为普通的方式外，还有：
 1d = dict(name = &amp;quot;value1&amp;quot;, ege =">
-<meta property="og:updated_time" content="2016-09-29T10:34:50.597Z">
+<meta property="og:updated_time" content="2016-09-29T10:37:09.404Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 中dict()">
 <meta name="twitter:description" content="字典是一种可变容器模型，可存储任意类型对象。创建字典时键必须指定，而值不必，字典的键必须是不可变对象，如字符串，数字或者元祖。
@@ -340,6 +340,7 @@
 <p>这里 <code>dict()</code>函数接收一个列表/元组，其内的每个元素也可以为列表/元组，列表或者元组的内必须有两个元素，第一个为键，第二个为值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dict(((&quot;name&quot;, &quot;He&quot;), (&quot;ege&quot;, 20)))</div><div class="line">&#123;&apos;name&apos;: &apos;He&apos;, &apos;ege&apos;: 20&#125;</div><div class="line"></div><div class="line">&gt;&gt;&gt; dict([[&quot;name&quot;, &quot;He&quot;], [&quot;age&quot;, 20]])</div><div class="line">&#123;&apos;name&apos;: &apos;He&apos;, &apos;age&apos;: 20&#125;</div></pre></td></tr></table></figure></p>
 <p>Python字典还有一种初始化方式,就是使用字典的fromkeys方法可以从列表中获取元素作为键并用None或fromkeys方法的第二个参数初始化</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; d = &#123;&#125;.fromkeys([&apos;name&apos;, &apos;age&apos;])</div><div class="line">&gt;&gt;&gt; d</div><div class="line">&#123;&apos;name&apos;: None, &apos;age&apos;: None&#125;</div><div class="line">&gt;&gt;&gt; d = dict().fromkeys([&apos;name&apos;, &apos;age&apos;])</div><div class="line">&gt;&gt;&gt; d</div><div class="line">&#123;&apos;name&apos;: None, &apos;age&apos;: None&#125;</div><div class="line">&gt;&gt;&gt; d = dict().fromkeys([&apos;name&apos;, &apos;age&apos;], 123)</div><div class="line">&gt;&gt;&gt; d</div><div class="line">&#123;&apos;name&apos;: 123, &apos;age&apos;: 123&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <ul>
 <li>对于获取键值，可以使用<code>get()</code>函数，<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; d = dict(name= &apos;He&apos;, age=20)</div><div class="line">&gt;&gt;&gt; d.get(&apos;name&apos;)</div><div class="line">&apos;He&apos;</div><div class="line">&gt;&gt;&gt; d.get(&apos;blogname&apos;)</div><div class="line">None</div><div class="line">&gt;&gt;&gt; info.get(&apos;blogname&apos;, &apos;hwenc&apos;)</div><div class="line">&apos;hwenc&apos;</div></pre></td></tr></table></figure>
 </li>
